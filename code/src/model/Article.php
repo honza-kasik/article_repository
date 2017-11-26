@@ -8,17 +8,21 @@ namespace Model;
  **/
 class Article {
 
-    /** @Id @Column(type="integer") @GeneratedValue **/
+    /**
+     * @Id
+     * @GeneratedValue
+     * @Column(type="integer")
+     **/
     private $id;
 
     /** @Column(type="string") **/
     private $name;
 
-    /** @OneToOne(targetEntity="Model\Publication") **/
+    /** @OneToOne(targetEntity="Publication") **/
     private $publication;
 
     /**
-     * @ManyToMany(targetEntity="Model\Author", mappedBy="articles")
+     * @ManyToMany(targetEntity="Author", mappedBy="articles")
      */
     private $authors;
 

@@ -27,7 +27,10 @@ class Author {
     /** @Column(type="string", nullable=true) **/
     private $titleAfter;
 
-    /** @ManyToMany(targetEntity="Model\Article", mappedBy="authors") **/
+    /**
+     * @ManyToMany(targetEntity="Article", inversedBy="authors")
+     * @JoinTable(name="authors_articles")
+    **/
     private $articles;
 
     public function __construct() {

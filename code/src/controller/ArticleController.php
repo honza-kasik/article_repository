@@ -1,7 +1,4 @@
 <?php
-
-//todo form validation
-
 require_once("/code/bootstrap.php");
 
 use Model\Publication;
@@ -12,6 +9,7 @@ use Manager\AuthorManager;
 
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
+    //todo form validation
 
     if ($action == "create") {
         $article = new Article();
@@ -19,7 +17,8 @@ if (isset($_GET['action'])) {
         $article->setPublication(extractPublicationFromPost($entityManager));
         $idArray = preg_split('/[^a-z0-9.\']+/i', $_POST['articleAuthors']);
         foreach ($idArray as $authorId) {
-            $article->addAuthor(AuthorManager::getAuthor($authorId, $entityManager));
+            $author = AuthorManager::getAuthor($authorId, $entityManager);
+            $article->addAuthor($author);
         }
         ArticleManager::createArticle($article, $entityManager);
         header('Location: /index.php');

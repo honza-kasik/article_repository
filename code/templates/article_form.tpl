@@ -1,51 +1,58 @@
 {* Smarty *}
 
+{function form_input type=text required=true}
+    <label for="{$inputName}">{$label}</label>
+    <input
+        type="{$type}"
+        class="form-control"
+        id="{$inputName}"
+        name="{$inputName}"
+        placeholder="{$label}"
+        {if $required}
+            required
+        {/if}
+        {if isset($article)}
+            value="{eval var=$value|default:''}"
+        {/if}
+        />
+{/function}
+
 <form action="{$CONTROLLER_PATH}/ArticleController.php?action=create" method="post">
     <div class="form-group">
-        <label for="articleName">Article name:</label>
-        <input type="text" class="form-control" id="articleName" name="articleName" required>
+        {form_input label="Article name" inputName="articleName" value='{$article->getName()}'}
     </div>
     <div class="form-group">
-        <label for="articleAuthors">Authors:</label>
-        <input type="text" class="form-control" id="articleAuthors" name="articleAuthors" required>
+        {form_input label="Authors" inputName="articleAuthors"}
     </div>
     <div class="row">
         <div class="form-group col-md-6">
-            <label for="articlePublicationName">Publication name:</label>
-            <input type="text" class="form-control" id="publicationName" name="publicationName" required>
+            {form_input label="Publication name" inputName="articlePublicationName" value='{$article->getPublication()->getName()}'}
         </div>
         <div class="form-group col-md-6">
-            <label for="publicationIssuer">Publication issuer:</label>
-            <input type="text" class="form-control" id="publicationIssuer" name="publicationIssuer" required>
+            {form_input label="Publication issuer" inputName="articlePublicationIssuer" value='{$article->getPublication()->getIssuer()}'}
         </div>
     </div>
     <div class="row">
         <div class="form-group col-md-4">
-            <label for="publicationIssue">Publication issue:</label>
-            <input type="text" class="form-control" id="publicationIssue" name="publicationIssue" required>
+            {form_input label="Publication issue" inputName="articlePublicationIssue" value='{$article->getPublication()->getIssue()}'}
         </div>
         <div class="form-group col-md-4">
-            <label for="publicationYear">Publication year:</label>
-            <input type="text" class="form-control" id="publicationYear" name="publicationYear" required pattern="\d{literal}{4}{/literal}">
+            {form_input label="Publication year" inputName="articlePublicationYear" value='{$article->getPublication()->getYear()}'}
         </div>
         <div class="form-group col-md-4">
-            <label for="publicationPages">Publication pages:</label>
-            <input type="text" class="form-control" id="publicationPages" name="publicationPages" required>
+            {form_input label="Publication pages" inputName="articlePublicationPages" value='{$article->getPublication()->getPages()}'}
         </div>
     </div>
     <div class="row">
         <div class="form-group col-md-6">
-            <label for="publicationISSN">Publication ISSN:</label>
-            <input type="text" class="form-control" id="publicationISSN" name="publicationISSN" required>
+            {form_input label="Publication ISSN" inputName="articlePublicationISSN" value='{$article->getPublication()->getIssn()}'}
         </div>
         <div class="form-group col-md-6">
-            <label for="publicationDOI">Publication DOI:</label>
-            <input type="text" class="form-control" id="publicationDOI" name="publicationDOI">
+            {form_input label="Publication DOI" inputName="articlePublicationDOI" value='{$article->getPublication()->getDoi()}'}
         </div>
     </div>
     <div class="form-group">
-        <label for="publicationLink">Publication link:</label>
-        <input type="text" class="form-control" id="publicationLink" name="publicationLink">
+        {form_input label="Publication link" inputName="articlePublicationLink" value='{$article->getPublication()->getLink()}' required=false}
     </div>
     <button type="submit" class="btn btn-default">Add new article</button>
 </form>

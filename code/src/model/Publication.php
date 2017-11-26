@@ -7,7 +7,11 @@ namespace Model;
  **/
 class Publication {
 
-    /** @Id @Column(type="integer") @GeneratedValue **/
+    /**
+     * @Id
+     * @GeneratedValue
+     * @Column(type="integer")
+     **/
     private $id;
 
     /** @Column(type="string") **/
