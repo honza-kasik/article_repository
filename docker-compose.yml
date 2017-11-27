@@ -36,8 +36,6 @@ services:
    - "8989:3306"
   volumes:
    - ./data/db/mysql:/var/lib/mysql/:z
-   - ./mysql_conf:/etc/mysql/conf.d/:z
-   - ./mysql_log:/var/log/mysql/:z
 
  composer:
    restart:    'no'
