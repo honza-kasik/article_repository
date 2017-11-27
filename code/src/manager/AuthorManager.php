@@ -23,6 +23,11 @@ class AuthorManager {
         return $records;
     }
 
+    function updateAuthor($author, $entityManager) {
+        $entityManager->merge($author);
+        $entityManager->flush();
+    }
+
     function getAuthorsContaining($word, $entityManager) {
         $qb = $entityManager->createQueryBuilder();
         return $qb->select('a')

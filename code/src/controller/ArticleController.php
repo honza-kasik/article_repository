@@ -26,19 +26,23 @@ if (isset($_GET['action'])) {
         $article = ArticleManager::getArticle($id, $entityManager);
         $article->setName($_POST['articleName']);
         $article->setPublication(updatePublication($article->getPublication()->getId(), $entityManager));
-        processAuthorUpdates($entityManager);
+        processAuthorUpdates($article, $entityManager);
         ArticleManager::updateArticle($article, $entityManager);
         header('Location: /index.php');
-    } else  {
+    } else if ($action == "remove") {
+        $id = $_GET['id'];
+        $article = ArticleManager::getArticle($id, $entityManager);
+        ArticleManager::removeArticle($article, $entityManager);
+        header('Location: /index.php');
+    } else {
         echo "Unknown action '" . $action . "' !";
-        //unknown action
     }
 }
 
 /**
  * Add or remove author according to POST state
 **/
-function processAuthorUpdates($entityManager) {
+function processAuthorUpdates($article, $entityManager) {
     $authorIdsSaved = array();
     foreach ($article->getAuthors() as $author) {
         $authorIdsSaved[] = $author->getId();

@@ -23,6 +23,11 @@ class ArticleManager {
         $entityManager->flush();
     }
 
+    public function removeArticle($article, $entityManager) {
+        $entityManager->remove($article);
+        $entityManager->flush();
+    }
+
 }
 
 ?>

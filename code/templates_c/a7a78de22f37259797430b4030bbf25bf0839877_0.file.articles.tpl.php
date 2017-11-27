@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-11-26 22:49:36
+/* Smarty version 3.1.30, created on 2017-11-27 10:05:50
   from "/code/templates/articles.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5a1b4500904e78_83355177',
+  'unifunc' => 'content_5a1be37e77a2f6_92283866',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a7a78de22f37259797430b4030bbf25bf0839877' => 
     array (
       0 => '/code/templates/articles.tpl',
-      1 => 1511736571,
+      1 => 1511777145,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:article_modal_bibtex.tpl' => 1,
   ),
 ),false)) {
-function content_5a1b4500904e78_83355177 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5a1be37e77a2f6_92283866 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="form-group">
     <input type="text" class="form-control" id="articles-filter" onkeyup="filterArticles()" placeholder="Filter articles">
@@ -35,8 +35,6 @@ if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['article']->value) {
 ?>
     <article class="list-group-item list-group-item-action flex-column align-items-start">
-        <h5 class="mb-1"><?php echo $_smarty_tpl->tpl_vars['article']->value->getName();?>
-</h5>
         <p class="mb-1">
            <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['article']->value->getAuthors(), 'author', false, NULL, 'articleAuthorLoop', array (
@@ -69,12 +67,16 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
            <small>[<?php echo $_smarty_tpl->tpl_vars['pub']->value->getIssuer();?>
 , ISSN <?php echo $_smarty_tpl->tpl_vars['pub']->value->getIssn();?>
 , doi:<?php echo $_smarty_tpl->tpl_vars['pub']->value->getDoi();?>
-] <a href="<?php echo $_smarty_tpl->tpl_vars['pub']->value->getLink();?>
-">PDF</a></small>
+]
+           <?php if ($_smarty_tpl->tpl_vars['pub']->value->getLink() !== null && $_smarty_tpl->tpl_vars['pub']->value->getLink() !== '') {?><a href="<?php echo $_smarty_tpl->tpl_vars['pub']->value->getLink();?>
+">PDF</a><?php }?></small>
 
         </p>
         <a href="#edit-article" data-toggle="modal" data-target="#articleModal_<?php echo $_smarty_tpl->tpl_vars['article']->value->getId();?>
 ">Edit</a> |
+        <a href="<?php echo $_smarty_tpl->tpl_vars['CONTROLLER_PATH']->value;?>
+/ArticleController.php?action=remove&id=<?php echo $_smarty_tpl->tpl_vars['article']->value->getId();?>
+">Remove</a> |
         <a href="#generate-bibtex" data-toggle="modal" data-target="#articleBibtex_<?php echo $_smarty_tpl->tpl_vars['article']->value->getId();?>
 ">Bibtex</a>
 

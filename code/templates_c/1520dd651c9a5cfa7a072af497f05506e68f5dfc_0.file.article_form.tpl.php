@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-11-26 21:34:51
+/* Smarty version 3.1.30, created on 2017-11-27 09:58:39
   from "/code/templates/article_form.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5a1b337b8af546_19423963',
+  'unifunc' => 'content_5a1be1cf3de3a2_53988710',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1520dd651c9a5cfa7a072af497f05506e68f5dfc' => 
     array (
       0 => '/code/templates/article_form.tpl',
-      1 => 1511732089,
+      1 => 1511775574,
       2 => 'file',
     ),
   ),
@@ -20,18 +20,16 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5a1b337b8af546_19423963 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5a1be1cf3de3a2_53988710 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
   'form_input' => 
   array (
     'compiled_filepath' => '/code/templates_c/1520dd651c9a5cfa7a072af497f05506e68f5dfc_0.file.article_form.tpl.php',
     'uid' => '1520dd651c9a5cfa7a072af497f05506e68f5dfc',
-    'call_name' => 'smarty_template_function_form_input_17725340945a1b337b87d8f6_09733365',
+    'call_name' => 'smarty_template_function_form_input_9038858265a1be1cf3bcc15_27021341',
   ),
 ));
 ?>
-
-
 
 
 
@@ -112,9 +110,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
     </button>
 </form>
 <?php }
-/* smarty_template_function_form_input_17725340945a1b337b87d8f6_09733365 */
-if (!function_exists('smarty_template_function_form_input_17725340945a1b337b87d8f6_09733365')) {
-function smarty_template_function_form_input_17725340945a1b337b87d8f6_09733365($_smarty_tpl,$params) {
+/* smarty_template_function_form_input_9038858265a1be1cf3bcc15_27021341 */
+if (!function_exists('smarty_template_function_form_input_9038858265a1be1cf3bcc15_27021341')) {
+function smarty_template_function_form_input_9038858265a1be1cf3bcc15_27021341($_smarty_tpl,$params) {
 $params = array_merge(array('type'=>'text','required'=>true), $params);
 foreach ($params as $key => $value) {
 $_smarty_tpl->tpl_vars[$key] = new Smarty_Variable($value, $_smarty_tpl->isRenderingCache);
@@ -142,5 +140,5 @@ _<?php echo $_smarty_tpl->tpl_vars['form_id']->value;?>
         />
 <?php
 }}
-/*/ smarty_template_function_form_input_17725340945a1b337b87d8f6_09733365 */
+/*/ smarty_template_function_form_input_9038858265a1be1cf3bcc15_27021341 */
 }
