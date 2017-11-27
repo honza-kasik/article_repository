@@ -41,6 +41,10 @@ class Publication {
     /** @Column(type="string", nullable=true) **/
     private $link;
 
+    public function getId() {
+        return $this->id;
+    }
+
     public function getName() {
         return $this->name;
     }

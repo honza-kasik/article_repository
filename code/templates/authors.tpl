@@ -1,4 +1,6 @@
-<input type="text" class="form-control" id="authors-filter" onkeyup="filterAuthors()">
+<div class="form-group">
+    <input type="text" class="form-control" id="authors-filter" onkeyup="filterAuthors()" placeholder="Filter authors">
+</div>
 
 <ul class="list-group" id="authors-list">
 {foreach from=$authors item=author}

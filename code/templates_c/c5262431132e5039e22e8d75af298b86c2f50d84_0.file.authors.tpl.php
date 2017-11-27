@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-11-25 06:07:01
+/* Smarty version 3.1.30, created on 2017-11-26 22:05:56
   from "/code/templates/authors.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5a1908856f9b66_12431315',
+  'unifunc' => 'content_5a1b3ac4423c18_35512151',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c5262431132e5039e22e8d75af298b86c2f50d84' => 
     array (
       0 => '/code/templates/authors.tpl',
-      1 => 1511590017,
+      1 => 1511733953,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5a1908856f9b66_12431315 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5a1b3ac4423c18_35512151 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
-<input type="text" class="form-control" id="authors-filter" onkeyup="filterAuthors()">
+<div class="form-group">
+    <input type="text" class="form-control" id="authors-filter" onkeyup="filterAuthors()" placeholder="Filter authors">
+</div>
 
 <ul class="list-group" id="authors-list">
 <?php

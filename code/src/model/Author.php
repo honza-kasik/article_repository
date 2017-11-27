@@ -81,6 +81,10 @@ class Author {
         $this->articles->add($article);
     }
 
+    public function removeArticle($article) {
+        $this->articles->removeElement($article);
+    }
+
     public function asString() {
         $string = "$this->titleBefore";
         if (!is_null($this->titleBefore)) {
@@ -91,15 +95,6 @@ class Author {
             $string .= ", $this->titleAfter";
         }
         return $string;
-    }
-
-    public function asJSArray() {
-        $string = $this->asString();
-        return "{\"value\": $this->id, \"label\": \"$string\"}";
-    }
-
-    public function asSuggestionJSON() {
-        return "{\"value\": \"". $this->asString() . "\", \"suggestion\": " . $this->asJSArray() . "}";
     }
 }
 

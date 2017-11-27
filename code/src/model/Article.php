@@ -59,6 +59,11 @@ class Article {
         $author->addArticle($this);
     }
 
+    public function removeAuthor($author) {
+        $author->removeArticle($this);
+        $this->authors->removeElement($author);
+    }
+
     public function setAuthors($authors) {
         $this->authors = $authors;
     }

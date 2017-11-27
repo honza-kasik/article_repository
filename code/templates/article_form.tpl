@@ -5,7 +5,7 @@
     <input
         type="{$type}"
         class="form-control"
-        id="{$inputName}"
+        id="{$inputName}_{$form_id}"
         name="{$inputName}"
         placeholder="{$label}"
         {if $required}
@@ -17,12 +17,19 @@
         />
 {/function}
 
-<form action="{$CONTROLLER_PATH}/ArticleController.php?action=create" method="post">
+<form action="{$CONTROLLER_PATH}/ArticleController.php?action={if isset($article)}edit&id={$article->getId()}{else}create{/if}" method="post">
     <div class="form-group">
         {form_input label="Article name" inputName="articleName" value='{$article->getName()}'}
     </div>
     <div class="form-group">
-        {form_input label="Authors" inputName="articleAuthors"}
+        <label for="articleAuthors">Article authors</label>
+        <select class="articleAuthorsSuggesting" id="articleAuthors_{$form_id}" name="articleAuthors[]" multiple="multiple">
+            {if isset($article)}
+                {foreach from=$article->getAuthors() item=author}
+                    <option value="{$author->getId()}" selected="selected">{$author->asString()}</option>
+                {/foreach}
+            {/if}
+        </select>
     </div>
     <div class="row">
         <div class="form-group col-md-6">
@@ -54,5 +61,11 @@
     <div class="form-group">
         {form_input label="Publication link" inputName="articlePublicationLink" value='{$article->getPublication()->getLink()}' required=false}
     </div>
-    <button type="submit" class="btn btn-default">Add new article</button>
+    <button type="submit" class="btn btn-primary">
+    {if isset($article)}
+        Save article
+    {else}
+        Add new article
+    {/if}
+    </button>
 </form>

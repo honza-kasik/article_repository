@@ -1,16 +1,25 @@
-<div class="list-group" id="articles-list" onkeyup="filterArticles()">
+<div class="form-group">
+    <input type="text" class="form-control" id="articles-filter" onkeyup="filterArticles()" placeholder="Filter articles">
+</div>
+
+<div class="list-group" id="articles-list">
 {foreach from=$articles item=article}
-    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-       <div class="d-flex justify-content-between">
-         <h5 class="mb-1">{$article->getName()}</h5>
-       </div>
-       {assign var="article_authors" value=$article->getAuthors()}
-       <p class="mb-1">
-       {foreach from=$article->getAuthors() item=author}
-           <em></em>
-           {$author->getFirstName()}
-       {/foreach}
-        {$article->getPublication()->getName()}</p>
-     </a>
+    <article class="list-group-item list-group-item-action flex-column align-items-start">
+        <h5 class="mb-1">{$article->getName()}</h5>
+        <p class="mb-1">
+           {foreach from=$article->getAuthors() item=author name=articleAuthorLoop}
+               <em>{$author->getLastName()} {$author->getFirstName()|substr:0:1}.</em>{if not $smarty.foreach.articleAuthorLoop.last}, {/if}{/foreach}:
+           {$article->getName()}.<br/>
+           {assign var="pub" value=$article->getPublication()}
+           <strong>{$pub->getName()}, {$pub->getIssue()}</strong>({$pub->getPages()})({$pub->getYear()})<br/>
+           <small>[{$pub->getIssuer()}, ISSN {$pub->getIssn()}, doi:{$pub->getDoi()}] <a href="{$pub->getLink()}">PDF</a></small>
+
+        </p>
+        <a href="#edit-article" data-toggle="modal" data-target="#articleModal_{$article->getId()}">Edit</a> |
+        <a href="#generate-bibtex" data-toggle="modal" data-target="#articleBibtex_{$article->getId()}">Bibtex</a>
+
+        {include file="article_modal_edit.tpl" article=$article modal_id="articleModal_{$article->getId()}"}
+        {include file="article_modal_bibtex.tpl" article=$article modal_id="articleBibtex_{$article->getId()}"}
+    </article>
 {/foreach}
 </div>

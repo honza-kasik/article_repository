@@ -14,6 +14,15 @@ class ArticleManager {
         return $records;
     }
 
+    public function getArticle($id, $entityManager) {
+        return $entityManager->find('Model\Article', $id);
+    }
+
+    public function updateArticle($article, $entityManager) {
+        $entityManager->merge($article);
+        $entityManager->flush();
+    }
+
 }
 
 ?>

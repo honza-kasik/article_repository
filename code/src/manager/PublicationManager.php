@@ -14,6 +14,14 @@ class PublicationManager {
         return $records;
     }
 
+    function getPublication($id, $entityManager) {
+        return $entityManager->find('Model\Publication', $id);
+    }
+
+    public function updatePublication($publication, $entityManager) {
+        $entityManager->merge($publication);
+        $entityManager->flush();
+    }
 }
 
 ?>

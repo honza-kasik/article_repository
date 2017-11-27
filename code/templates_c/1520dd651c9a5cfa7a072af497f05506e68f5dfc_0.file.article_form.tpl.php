@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-11-26 18:46:22
+/* Smarty version 3.1.30, created on 2017-11-26 21:34:51
   from "/code/templates/article_form.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5a1b0bfeb26ec0_19381128',
+  'unifunc' => 'content_5a1b337b8af546_19423963',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1520dd651c9a5cfa7a072af497f05506e68f5dfc' => 
     array (
       0 => '/code/templates/article_form.tpl',
-      1 => 1511721980,
+      1 => 1511732089,
       2 => 'file',
     ),
   ),
@@ -20,13 +20,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5a1b0bfeb26ec0_19381128 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5a1b337b8af546_19423963 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
   'form_input' => 
   array (
     'compiled_filepath' => '/code/templates_c/1520dd651c9a5cfa7a072af497f05506e68f5dfc_0.file.article_form.tpl.php',
     'uid' => '1520dd651c9a5cfa7a072af497f05506e68f5dfc',
-    'call_name' => 'smarty_template_function_form_input_19624220145a1b0bfeaf29c8_17953704',
+    'call_name' => 'smarty_template_function_form_input_17725340945a1b337b87d8f6_09733365',
   ),
 ));
 ?>
@@ -34,15 +34,36 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
 
 
 
+
+
 <form action="<?php echo $_smarty_tpl->tpl_vars['CONTROLLER_PATH']->value;?>
-/ArticleController.php?action=create" method="post">
+/ArticleController.php?action=<?php if (isset($_smarty_tpl->tpl_vars['article']->value)) {?>edit&id=<?php echo $_smarty_tpl->tpl_vars['article']->value->getId();
+} else { ?>create<?php }?>" method="post">
     <div class="form-group">
         <?php $_smarty_tpl->ext->_tplFunction->callTemplateFunction($_smarty_tpl, 'form_input', array('label'=>"Article name",'inputName'=>"articleName",'value'=>'{$article->getName()}'), true);?>
 
     </div>
     <div class="form-group">
-        <?php $_smarty_tpl->ext->_tplFunction->callTemplateFunction($_smarty_tpl, 'form_input', array('label'=>"Authors",'inputName'=>"articleAuthors"), true);?>
+        <label for="articleAuthors">Article authors</label>
+        <select class="articleAuthorsSuggesting" id="articleAuthors_<?php echo $_smarty_tpl->tpl_vars['form_id']->value;?>
+" name="articleAuthors[]" multiple="multiple">
+            <?php if (isset($_smarty_tpl->tpl_vars['article']->value)) {?>
+                <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['article']->value->getAuthors(), 'author');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['author']->value) {
+?>
+                    <option value="<?php echo $_smarty_tpl->tpl_vars['author']->value->getId();?>
+" selected="selected"><?php echo $_smarty_tpl->tpl_vars['author']->value->asString();?>
+</option>
+                <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
 
+            <?php }?>
+        </select>
     </div>
     <div class="row">
         <div class="form-group col-md-6">
@@ -82,12 +103,18 @@ $_smarty_tpl->ext->_tplFunction->registerTplFunctions($_smarty_tpl, array (
         <?php $_smarty_tpl->ext->_tplFunction->callTemplateFunction($_smarty_tpl, 'form_input', array('label'=>"Publication link",'inputName'=>"articlePublicationLink",'value'=>'{$article->getPublication()->getLink()}','required'=>false), true);?>
 
     </div>
-    <button type="submit" class="btn btn-default">Add new article</button>
+    <button type="submit" class="btn btn-primary">
+    <?php if (isset($_smarty_tpl->tpl_vars['article']->value)) {?>
+        Save article
+    <?php } else { ?>
+        Add new article
+    <?php }?>
+    </button>
 </form>
 <?php }
-/* smarty_template_function_form_input_19624220145a1b0bfeaf29c8_17953704 */
-if (!function_exists('smarty_template_function_form_input_19624220145a1b0bfeaf29c8_17953704')) {
-function smarty_template_function_form_input_19624220145a1b0bfeaf29c8_17953704($_smarty_tpl,$params) {
+/* smarty_template_function_form_input_17725340945a1b337b87d8f6_09733365 */
+if (!function_exists('smarty_template_function_form_input_17725340945a1b337b87d8f6_09733365')) {
+function smarty_template_function_form_input_17725340945a1b337b87d8f6_09733365($_smarty_tpl,$params) {
 $params = array_merge(array('type'=>'text','required'=>true), $params);
 foreach ($params as $key => $value) {
 $_smarty_tpl->tpl_vars[$key] = new Smarty_Variable($value, $_smarty_tpl->isRenderingCache);
@@ -100,6 +127,7 @@ $_smarty_tpl->tpl_vars[$key] = new Smarty_Variable($value, $_smarty_tpl->isRende
 "
         class="form-control"
         id="<?php echo $_smarty_tpl->tpl_vars['inputName']->value;?>
+_<?php echo $_smarty_tpl->tpl_vars['form_id']->value;?>
 "
         name="<?php echo $_smarty_tpl->tpl_vars['inputName']->value;?>
 "
@@ -109,11 +137,10 @@ $_smarty_tpl->tpl_vars[$key] = new Smarty_Variable($value, $_smarty_tpl->isRende
             required
         <?php }?>
         <?php if (isset($_smarty_tpl->tpl_vars['article']->value)) {?>
-            value="<?php echo (($tmp = @$_smarty_tpl->tpl_vars['evaledValue']->value)===null||$tmp==='' ? '' : $tmp);?>
-"
+            value="<?php $_template = new Smarty_Internal_Template('eval:'.(($tmp = @$_smarty_tpl->tpl_vars['value']->value)===null||$tmp==='' ? '' : $tmp), $_smarty_tpl->smarty, $_smarty_tpl);echo $_template->fetch(); ?>"
         <?php }?>
         />
 <?php
 }}
-/*/ smarty_template_function_form_input_19624220145a1b0bfeaf29c8_17953704 */
+/*/ smarty_template_function_form_input_17725340945a1b337b87d8f6_09733365 */
 }
