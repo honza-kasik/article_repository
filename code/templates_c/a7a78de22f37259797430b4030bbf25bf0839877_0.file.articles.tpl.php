@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-11-27 10:05:50
+/* Smarty version 3.1.30, created on 2017-11-27 10:18:22
   from "/code/templates/articles.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5a1be37e77a2f6_92283866',
+  'unifunc' => 'content_5a1be66eaae570_80125511',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a7a78de22f37259797430b4030bbf25bf0839877' => 
     array (
       0 => '/code/templates/articles.tpl',
-      1 => 1511777145,
+      1 => 1511777899,
       2 => 'file',
     ),
   ),
@@ -22,11 +22,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:article_modal_bibtex.tpl' => 1,
   ),
 ),false)) {
-function content_5a1be37e77a2f6_92283866 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5a1be66eaae570_80125511 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
-<div class="form-group">
+<!--div class="form-group">
     <input type="text" class="form-control" id="articles-filter" onkeyup="filterArticles()" placeholder="Filter articles">
-</div>
+</div-->
 
 <div class="list-group" id="articles-list">
 <?php

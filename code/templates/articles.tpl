@@ -1,6 +1,6 @@
-<div class="form-group">
+<!--div class="form-group">
     <input type="text" class="form-control" id="articles-filter" onkeyup="filterArticles()" placeholder="Filter articles">
-</div>
+</div-->
 
 <div class="list-group" id="articles-list">
 {foreach from=$articles item=article}
